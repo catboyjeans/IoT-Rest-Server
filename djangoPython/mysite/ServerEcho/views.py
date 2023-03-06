@@ -27,6 +27,22 @@ def URL_handler(request):
 
     return argDict
 
+#Apply changes to database
+def apply_changes(Person):
+
+    pass
+
+    # Person.state1 = query['Vector State: ']['s0']
+    # Person.state2 = query['Vector State: ']['s1']
+    # Person.state3 = query['Vector State: ']['s2']
+    # Person.state4 = query['Vector State: ']['s3']
+    # Person.state5 = query['Vector State: ']['s4']
+    # Person.state6 = query['Vector State: ']['s5']
+    # Person.state7 = query['Vector State: ']['s6']
+    # Person.last_name = 'Cat goes here'
+    
+    # Person.save()
+
 #   Actual Pages ===================================================================================
 
 #tutorial page 
@@ -56,9 +72,9 @@ def recieve_message(request, thing_name):
     p.state6 = query['Vector State: ']['s5']
     p.state7 = query['Vector State: ']['s6']
     p.last_name = 'Cat goes here'
-        
+    
     p.save()
-        
+
     return JsonResponse(query)
 
 def get_data(request, thing_name):
@@ -69,13 +85,13 @@ def get_data(request, thing_name):
         query.update({'Debugg State':'Object found in database!! Values will be displayed'})
 
         p=Person.objects.filter(first_name=thing_name).first()
-        query.update({'element0' : p.state1})
-        query.update({'element1' : p.state2})
-        query.update({'element2' : p.state3})
-        query.update({'element3' : p.state4})
-        query.update({'element4' : p.state5})
-        query.update({'element5' : p.state6})
-        query.update({'element6' : p.state7})
+        query.update({'s0' : p.state1})
+        query.update({'s1' : p.state2})
+        query.update({'s2' : p.state3})
+        query.update({'s3' : p.state4})
+        query.update({'s4' : p.state5})
+        query.update({'s5' : p.state6})
+        query.update({'s6' : p.state7})
 
     else:
         query.update({'Debugg State':'Object not found in database... '})
