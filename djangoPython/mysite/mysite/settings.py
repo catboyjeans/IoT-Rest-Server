@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'ServerEcho.apps.ServerechoConfig',
+    # 'ServerEcho.apps.ServerechoConfig',
+    'ServerEcho',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
