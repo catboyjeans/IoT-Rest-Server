@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     # 'ServerEcho.apps.ServerechoConfig',
     'ServerEcho',
     'SocketComm',
+    'daphne',
     'channels',
     'django.contrib.admin',
     'django.contrib.auth',
