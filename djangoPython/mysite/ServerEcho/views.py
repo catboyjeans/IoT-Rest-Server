@@ -5,7 +5,6 @@ from django.http import HttpResponse, JsonResponse
 from .models import Person
 
 
-
 # Create your views here----------------------------------------------------------------------------------
 
 #   Utility functions ===================================================================================
