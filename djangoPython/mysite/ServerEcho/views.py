@@ -65,6 +65,8 @@ def recieve_message(request, thing_name):
 
     #   Apply changes to database
     
+    p.last_name = 'Cat goes here'
+
     p.state1 = query['Vector State: ']['s0']
     p.state2 = query['Vector State: ']['s1']
     p.state3 = query['Vector State: ']['s2']
@@ -72,9 +74,9 @@ def recieve_message(request, thing_name):
     p.state5 = query['Vector State: ']['s4']
     p.state6 = query['Vector State: ']['s5']
     p.state7 = query['Vector State: ']['s6']
-    p.last_name = 'Cat goes here'
-    p.recieved = False
-    
+
+    p.recieved = True
+      
     p.save()
 
     return JsonResponse(query)

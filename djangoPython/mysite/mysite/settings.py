@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # 'ServerEcho.apps.ServerechoConfig',
-    'ServerEcho',
+    'ServerEcho.apps.ServerechoConfig',
+    # 'ServerEcho',
     'SocketComm',
     'daphne',
     'channels',
