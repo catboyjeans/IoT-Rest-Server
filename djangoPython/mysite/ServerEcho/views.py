@@ -73,6 +73,7 @@ def recieve_message(request, thing_name):
     p.state6 = query['Vector State: ']['s5']
     p.state7 = query['Vector State: ']['s6']
     p.last_name = 'Cat goes here'
+    p.recieved = False
     
     p.save()
 
