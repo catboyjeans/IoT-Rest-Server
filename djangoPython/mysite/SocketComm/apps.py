@@ -1,5 +1,6 @@
 from django.apps import AppConfig
 
-class ServerechoConfig(AppConfig):
+
+class SocketcommConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'ServerEcho'
+    name = 'SocketComm'
