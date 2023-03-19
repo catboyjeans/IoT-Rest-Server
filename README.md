@@ -25,8 +25,8 @@
 
 ##  User Stories
 
-    - As an implementation dude, I want to be able to communicate an element wirelessly to a main Processing Unit, so I can process the data independently from the source of origin.
-    - As a designer, I want to retrieve an element data from a database 
+- As an implementation dude, I want to be able to communicate an element wirelessly to a main Processing Unit, so I can process the data independently from the source of origin.
+- As a designer, I want to retrieve an element data from a database 
 
 IoT Server Framework Proposal
 
@@ -62,8 +62,11 @@ something
 </p>
 
 ![Alt text](images/DeviceCloud.png)
+
 ![Alt text](images/DeviceDevice.png)
+
 ![Alt text](Images/Gateway.png)
+
 ![Alt text](Images/OversimplifiedComm.png)
 
 
