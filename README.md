@@ -34,7 +34,7 @@ IoT Server Framework Proposal
 
 <p style="text-align: center;">
 
-![Django Site Diagram](images/GeneralDjangoModel.png)
+![Django Site Diagram](Images/GeneralDjangoModel.png)
 
 </p>
 
@@ -61,12 +61,12 @@ The frame is implemented by a python dictionary which is later "dumped" to a jso
 something
 </p>
 
-![Alt text](images/DeviceCloud.png)
+![Alt text](Images/DeviceCloud.png)
 
-![Alt text](images/DeviceDevice.png)
+![Alt text](Images/DeviceDevice.png)
 
-![Alt text](images/Gateway.png)
+![Alt text](Images/Gateway.png)
 
-![Alt text](images/OversimplifiedComm.png)
+![Alt text](Images/OversimplifiedComm.png)
 
 
