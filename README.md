@@ -65,8 +65,8 @@ something
 
 ![Alt text](images/DeviceDevice.png)
 
-![Alt text](Images/Gateway.png)
+![Alt text](images/Gateway.png)
 
-![Alt text](Images/OversimplifiedComm.png)
+![Alt text](images/OversimplifiedComm.png)
 
 
