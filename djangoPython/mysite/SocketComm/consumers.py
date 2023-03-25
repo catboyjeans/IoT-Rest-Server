@@ -51,6 +51,9 @@ class WSConsumer(WebsocketConsumer):
     def listening_requests(self,query,thing_name):
         while not self.stop:
                 p=Person.objects.filter(first_name=thing_name).first()
+                # Update the query during the threaded-listening loop 
+                query.update(parseQuery(p))
+                
                 b=BooleanFlag.objects.filter(NAME='unique').first()
 
                 if p.recieved:
