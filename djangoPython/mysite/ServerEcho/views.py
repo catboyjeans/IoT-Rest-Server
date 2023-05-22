@@ -37,6 +37,7 @@ def recieve_message(request, thing_name):
     if Person.objects.filter(first_name=thing_name).exists():
         query.update({'Debugg State':'Object found in database, value assigned to object'})
         p1=Person.objects.filter(first_name=thing_name).first()
+        
        # Change database value
         p1.state1 = query['element0']
         p1.state2 = query['element1']
