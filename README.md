@@ -58,17 +58,17 @@ The server currently gives the user three services to interact with defined by t
 
 </p>
 
-### To Post
+### To-Post
 The server's posting services consist of sending https requests with some arguments using the URL query args, these arguments are then parsed by the server uppon arrival and dumped into the sqlite database, to do this use the following URL, you can put it in any browser while the server is running in the background 
 ```
 http://127.0.0.1:8000/things/post/myThing?s0=0&s1=1&s2=2&s3=3&s4=4&s5=5&s6=6
 ```
-### To Read
+### To-Read
 Now that you have successfully posted your thing into the server you might want to take a look at it and retrieve the data you or someone else stored, to do this use the following URL, again any browser is capable of sending this request
 ```
 http://127.0.0.1:8000/things/read/myThing
 ```
-### To Listen
+### To-Listen
 You might want to keep a continuous conection insead of havinf to check out the value iteratively, to do this we can use the listen service, in contrast with the previous URLs, this one cannot be used directly with a web browser, you can use the rusty [websocat](https://github.com/vi/websocat) tool in a linux platform or the third-party site [websocketking](https://websocketking.com/) to stablish such cool connection, once your chosen tool is ready input the following URL
 ```
 ws://127.0.0.1:8000/myThing
