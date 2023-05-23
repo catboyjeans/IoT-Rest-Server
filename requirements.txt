@@ -16,7 +16,6 @@ Django==4.1.7
 fonttools==4.39.3
 gpiozero==1.6.2
 greenlet==0.4.17
-gyp==0.1
 hyperlink==21.0.0
 idna==3.4
 importlib-resources==5.12.0
