@@ -3,9 +3,8 @@ Django server for IoT-based data transmission infrastructure proporsal
 
 ----------
 # Table of Contents
-## 1. [Overview](#example)
-## 2. [Installation](#installation)
-## 3. [User Guide](#user-guide)
+## 1. [Installation](#installation)
+## 2. [User Guide](#user-guide)
 ## 3. [Wiki](#wiki)
 
 ----------
