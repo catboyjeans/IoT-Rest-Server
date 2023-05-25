@@ -5,6 +5,7 @@ Django server for IoT-based data transmission infrastructure proporsal
 # Table of Contents
 ## 1. [Installation](#installation)
 ## 2. [User Guide](#user-guide)
+## 4. [LAN Support](#lan-support)
 ## 3. [Wiki](#wiki)
 
 ----------
@@ -73,6 +74,32 @@ You might want to keep a continuous conection insead of havinf to check out the 
 ```
 ws://127.0.0.1:8000/myThing
 ```
+## LAN Support
+Django by default is configured to deploy a 'development' version of the server with the DEBUG flag, enabling and disabling a bunch of things. When this testing version activated the server will begin in the following socket: starting server host at 'localhost' and port=8000. The fact that the server host deploys within localhost will not allow for other devices to access the machine over LAN. This concept is called [loopback](https://en.wikipedia.org/wiki/Localhost), which is an abstraction made by the OS so the computer can send IP packets to itself without requiring any actual physical Network Interface Controller. 
+
+To disable this development version, navigate to the main settings.py and set the DEBUG variable to False, also set the variable ALLOWED_HOSTS = ['*'], this is rather insecure, so be careful when using it at bigger networks.
+
+Now that the server is no longer in dev mode, run daphne in the desired port and address with the -b and -p flag respectively. 
+ 
+```bash
+daphne -b 0.0.0.0  -p 8000  mysite.asgi:application 
+```
+Once again the '0.0.0.0' address is an special address which allows the server to be able to host into the machine's Network Interfaces IP, this is done because due to DHCP some IPs arent static, instead of checking everytime for the updated IP, [this host in this network](https://en.wikipedia.org/wiki/0.0.0.0) can be wildcarded' as 0.0.0.0 
+
+Now that the server is running at this address, to access it from other devices just replace the machines' ip in the URL requests. To find out what is the ip of the machine use the ipconfig command in windows or ifconfig in Linux:
+```bash
+ipconfig 
+```
+This command will give you the info from all Network Interfaces. Just search for the IPv4 Wi-Fi adapter address
+
+![Alt text](Images/ipconfig-ss.png)
+
+Once the destination IP and destination port are known, the URL request for posting to the previous local server example would look as the following
+
+```
+http://192.168.0.19:8000/things/post/myThing?s0=0&s1=1&s2=2&s3=3&s4=4&s5=5&s6=6
+```
+Which again, can be requested by any device in the same network that support such high-layer protocols
 
 ## Wiki
 Model-Base design that involves specialized dynamics characterized by completely different sources varying from simulated to experimental, demands a strong infrastructure capable of adapting to all of the different requirements throughout the different stages of the design cycle. This proyect aims to propose the foundations of an IoT-based infrastructure which deals with the data transmission in a modular-fashioned and flexible way to deal with the adaptability required to keep up with the changing environment. [Django](https://www.djangoproject.com/) was used due to the nearly OS-agnostic characteristics of python (and all of the useful resources of course)
