@@ -6,8 +6,9 @@ Django server for IoT-based data transmission infrastructure proporsal
 ## 1. [Installation](#installation)
 ## 2. [User Guide](#user-guide)
 ## 3. [LAN Support](#lan-support)
-## 4. [Wiki](#wiki)
-
+## 4. [Internet Support](#internet-support)
+## 5. [Port Forwarding](#port-forwarding)
+## 5. [Wiki](#wiki)
 ----------
 
 ## Installation
@@ -100,8 +101,45 @@ Once the destination IP and destination port are known, the URL request for post
 http://192.168.0.19:8000/things/post/myThing?s0=0&s1=1&s2=2&s3=3&s4=4&s5=5&s6=6
 ```
 Which again, can be requested by any device in the same network that support such high-layer protocols
+## Internet Support
+So far we have been deploying the server locally, and although this is useful for local testing, a more complete ecosystem can be created by recieving information from a bunch of different distance independent locations. Although there are multiple ways and options of achiving this, it comes down to the availiability of a public IP address. If we do have a public address in our control in which we can configure the router for [port-forwarding](#port-forwarding) then we will be able to host a public-accessible server from our own computing power.
+
+There are two general scenarios around the public IP address: The public IP address is the same as the router's (local gateway), or the public IP address missmatches that of the router's WLAN IP address. We can check the WLANs IP address from our router by using the specific router's utility manager by opening any browser to the local's gateway IP address. 
+
+To check the public IP address you can use the following page [What is my Public Address???](https://whatismyipaddress.com/) and compare that to the WLAN address. If they are not the same then that means that the router might be under a [CGNAT](https://en.wikipedia.org/wiki/Carrier-grade_NAT), in which a third party server or using a VPN would be a solution for deploying publicly.
+
+## Railway.ap
+[Railway.app](https://railway.app/) is a third party service which has straight compatibility with docker and django, meaning that you wont have to change any of the server's source code, rather the daphne deployment commands. Note that you need to have a github account for this to work. 
+
+First [fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) this repository
+
+Once forked, go to [Railway.app](https://railway.app/), make an account via github link, in that way all your repos will be directly accessible from within railway.app
+
+
+Then click ['start new project'], choose the github option and select the forked github repo, select deploy now.
+
+Railway does not know we are deploying with daphne, so we will get some errors during the first build, to solve this navigate to settings under Deploy you will find the start command, insert the following and click the little tick
+
+```bash
+cd djangoPython/mysite/ && daphne -b 0.0.0.0  -p $PORT mysite.asgi:application 
+```
+The $PORT variable is handled by railway and it contains the actual port where the deployed server will be binded to
+
+![Alt text](Images/railway_startcommand.png)
+
+Now we have to make the server publicly accessible, this can be done by generating a public Domain, do this by going into environment settings and click generate 
+
+![](Images/railway-public.png)
+
+This will generate a link in which all the previously mentioned server services will be available, note that you dont have to type the port number, just type the required service, e.g.
+
+```bash
+iot-rest-server-production-eb2b.up.railway.app/read/myThing0
+```
+This link would be publicly accessible and will read the data stored for myThing0
 
 ## Wiki
+
 Model-Base design that involves specialized dynamics characterized by completely different sources varying from simulated to experimental, demands a strong infrastructure capable of adapting to all of the different requirements throughout the different stages of the design cycle. This proyect aims to propose the foundations of an IoT-based infrastructure which deals with the data transmission in a modular-fashioned and flexible way to deal with the adaptability required to keep up with the changing environment. [Django](https://www.djangoproject.com/) was used due to the nearly OS-agnostic characteristics of python (and all of the useful resources of course)
 
 #### Characteristics
