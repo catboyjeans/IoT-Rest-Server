@@ -7,7 +7,6 @@ Django server for IoT-based data transmission infrastructure proporsal
 ## 2. [User Guide](#user-guide)
 ## 3. [LAN Support](#lan-support)
 ## 4. [Internet Support](#internet-support)
-## 5. [Port Forwarding](#port-forwarding)
 ## 5. [Wiki](#wiki)
 ----------
 
