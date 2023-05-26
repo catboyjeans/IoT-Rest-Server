@@ -134,7 +134,7 @@ Now we have to make the server publicly accessible, this can be done by generati
 This will generate a link in which all the previously mentioned server services will be available, note that you dont have to type the port number, just type the required service, e.g.
 
 ```bash
-iot-rest-server-production-eb2b.up.railway.app/read/myThing0
+iot-rest-server-production-eb2b.up.railway.app/things/read/myThing0
 ```
 This link would be publicly accessible and will read the data stored for myThing0
 
