@@ -102,11 +102,25 @@ http://192.168.0.19:8000/things/post/myThing?s0=0&s1=1&s2=2&s3=3&s4=4&s5=5&s6=6
 ```
 Which again, can be requested by any device in the same network that support such high-layer protocols
 ## Internet Support
-So far we have been deploying the server locally, and although this is useful for local testing, a more complete ecosystem can be created by recieving information from a bunch of different distance independent locations. Although there are multiple ways and options of achiving this, it comes down to the availiability of a public IP address. If we do have a public address in our control in which we can configure the router for [port-forwarding](#port-forwarding) then we will be able to host a public-accessible server from our own computing power.
+So far we have been deploying the server locally, and although this is useful for local testing, a more complete ecosystem can be created by recieving information from a bunch of different distance independent locations. Although there are multiple ways and options of achiving this, it comes down to the availiability of a public IP address. If we do have a public address in our control in which we can configure the router for [port-forwarding](#port-forwarding) then we will be able to host a public-accessible server from our very own computer. If we dont have a direct configurable public address then we should use a third party provider such as railway or AWS, these services provide us with a remote computer that has its own separate public address and computing power in which we can deploy our server. Django is a highly supported framework when it comes to these services, so in most cases most of the work gets configured automatically.
 
-There are two general scenarios around the public IP address: The public IP address is the same as the router's (local gateway), or the public IP address missmatches that of the router's WLAN IP address. We can check the WLANs IP address from our router by using the specific router's utility manager by opening any browser to the local's gateway IP address. 
+First determine if router has its own public address, this can be done by checking the WAN IP address in your specific router utility.
+
+To access this utility, type the following command in a `cmd` session
+```cmd
+ipconfig /all
+```
+![Alt text](Images/default-gateway.png)
+
+Look for the Default Gateway address, this is your routers IP address which most likely will be the DHCP Server as well.
+
+Enter this IP into your favorite browser to access the router's utility app
+![](Images/arris.png)
+It really depends which router you are using speciffically but just google search how to get the WAN address in your specific model.
 
 To check the public IP address you can use the following page [What is my Public Address???](https://whatismyipaddress.com/) and compare that to the WLAN address. If they are not the same then that means that the router might be under a [CGNAT](https://en.wikipedia.org/wiki/Carrier-grade_NAT), in which a third party server or using a VPN would be a solution for deploying publicly.
+
+In the case they are the same, that means you are lucky and can configure a port-forwarding in your router, we wont be discussing that option here.
 
 ## Railway.ap
 [Railway.app](https://railway.app/) is a third party service which has straight compatibility with docker and django, meaning that you wont have to change any of the server's source code, rather the daphne deployment commands. Note that you need to have a github account for this to work. 
@@ -114,7 +128,6 @@ To check the public IP address you can use the following page [What is my Public
 First [fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) this repository
 
 Once forked, go to [Railway.app](https://railway.app/), make an account via github link, in that way all your repos will be directly accessible from within railway.app
-
 
 Then click ['start new project'], choose the github option and select the forked github repo, select deploy now.
 
